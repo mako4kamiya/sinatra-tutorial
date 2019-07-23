@@ -10,7 +10,6 @@ get '/hello' do #/hello?name=mako
     "<h1>Hello #{name}!</h1>"
   end
 
-  
   get '/user/:user_name' do #user/mako
     user_name = params[:user_name]
       "<h1>Hello #{user_name}!</h1>"
