@@ -1,7 +1,7 @@
 require 'sinatra'
 require 'sinatra/reloader'
 
-set :public_folder, File.dirname(__FILE__) + '/hello'
+set :public_folder, 'public'
 
 get '/' do
     "hello world"
@@ -20,6 +20,3 @@ get '/hello' do #/hello?name=mako
 get '/time' do
     Time.now.to_s
 end
-
-
-
