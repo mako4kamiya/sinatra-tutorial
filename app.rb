@@ -1,13 +1,15 @@
 require 'sinatra'
 require 'sinatra/reloader'
 
+set :public_folder, File.dirname(__FILE__) + '/hello'
+
 get '/' do
     "hello world"
 end
 
 get '/hello' do #/hello?name=mako
-    name = params[:name]
-    "<h1>Hello #{name}!</h1>"
+    @name = params[:name]
+    erb :hello
   end
 
   get '/user/:user_name' do #user/mako
