@@ -1,0 +1,23 @@
+require 'sinatra'
+require 'sinatra/reloader'
+
+get '/' do
+    "hello world"
+end
+
+get '/hello' do #/hello?name=mako
+    name = params[:name]
+    "<h1>Hello #{name}!</h1>"
+  end
+
+  get '/user/:user_name' do #user/mako
+    user_name = params[:user_name]
+      "<h1>Hello #{user_name}!</h1>"
+    end
+
+get '/time' do
+    Time.now.to_s
+end
+
+
+
