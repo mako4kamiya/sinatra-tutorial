@@ -7,6 +7,10 @@ get '/' do
     "hello world"
 end
 
+get '/ruby' do
+    "hello ruby"
+end
+
 get '/hello' do #/hello?name=mako
     @name = params[:name]
     erb :hello
