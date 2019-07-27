@@ -1,0 +1,14 @@
+<form action="/upload" method="POST" enctype="multipart/form-data">
+  <input type="file" name="img" id="img" />
+
+  <input type="submit" value="送信する">
+</form> 
+
+
+
+<a href="/">戻る</a>
+
+<% @images.each do |image|%>
+<img src="/images/<%= image%>" width="200" height="200">
+
+<%end%>
