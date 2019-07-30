@@ -9,8 +9,16 @@
 </head>
 <body>
 
-<h1>Sinatra Tutorial</h1>
+<a href="/" style="text-decoration: none;"><h1>Sinatra Tutorial</h1></a>
 
-<%= yield %>    
+
+<% if session[:name]%>
+    <p>Hello, <%= session[:name] %>さん</p>
+    <% else %>
+    <p>Hello,ゲストさん</p>
+<% end %>
+
+
+<%= yield %>
 </body>
 </html> 

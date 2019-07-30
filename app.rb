@@ -1,12 +1,21 @@
+###
+#ライブラリの読み込み
+##
 require 'sinatra'
 require 'sinatra/reloader'
-#画像フォルダを
-require 'fileutils'
+require 'fileutils' #画像フォルダを扱います。
+require 'sinatra/cookies' #クッキーを使います。
 
-
-
+###
+#sinatraの設定
+##
 set :public_folder, 'public'
+enable :sessions #セッションを使います
 
+
+###
+#ルーティン
+##
 get '/' do
   erb :index
 end
@@ -15,12 +24,17 @@ get '/ruby' do
   "hello ruby"
 end
 
-get '/hello' do #/hello?name=mako
-  @name = params[:name]
+get '/hello' do
+  # query string から取得
+  # @name = params[:name]
+  session[:name] =  params[:name]
+
   erb :hello
 end
 
-get '/user/:user_name' do #user/mako
+
+
+get '/user' do #user/mako
   @user_name = params[:user_name]
   erb :user
 end

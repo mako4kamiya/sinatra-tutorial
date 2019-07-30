@@ -1,4 +1,13 @@
-<h1 style="color: blue">Hello <%= @name %>!</h1>
 
+<%# if @name %>
+    <%# <p>Hello, <%= @nameさん</p> %>
+    <%# <% else %>
+    <%# <p>Hello,ゲストさん</p> %>
+<%# end %>
 
+<form action='/hello' method="GET">
+    <input type="text" name="name" id="name" placeholder="お名前は？">
+
+    <input type="submit" value="送信する">
+</form>
 <a href="/">戻る</a>
