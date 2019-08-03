@@ -5,12 +5,31 @@ require 'sinatra'
 require 'sinatra/reloader'
 require 'fileutils' #画像フォルダを扱います。
 require 'sinatra/cookies' #クッキーを使います。
+require 'pg' #PostgeSQLを使えるようにする。
 
 ###
 #sinatraの設定
 ##
 set :public_folder, 'public'
 enable :sessions #セッションを使います
+
+
+###
+#DBの設定？
+##
+def db
+  host = 'localhost'
+  user = 'kamiyamasako' #自分のユーザー名を入れる
+  password = ''
+  dbname = 'myapp'
+
+  # PostgreSQL クライアントのインスタンスを生成
+  PG::connect(
+  :host => host,
+  :user => user,
+  :password => password,
+  :dbname => dbname)
+end
 
 
 ###
@@ -32,10 +51,8 @@ get '/hello' do
   erb :hello
 end
 
-
-
-get '/user' do #user/mako
-  @user_name = params[:user_name]
+get '/user' do
+  @users = db.exec_params("select * from users").to_a #データベースからusersのテーブルの中身を取ってくる
   erb :user
 end
 
